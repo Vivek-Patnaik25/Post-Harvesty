@@ -80,6 +80,7 @@ Thumbs.db
 # Project specific
 *.tmp
 *.log
+<<<<<<< HEAD
 
 # Frontend (Next.js/Node)
 frontend/node_modules/
@@ -95,3 +96,5 @@ frontend/yarn-debug.log*
 frontend/yarn-error.log*
 frontend/.vercel
 
+=======
+>>>>>>> 6f2d3b3c1fa2013367afdff363c46a1529f23bd1
