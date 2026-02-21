@@ -6,21 +6,61 @@ import { Button } from '@/components/ui/Button';
 import { motion } from 'framer-motion';
 import { Sprout, Layers, MapPin, Leaf, Droplets, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
-import { api } from '@/lib/api';
 import type { SoilData } from '@/types';
+
+// Constants as requested
+const states = [
+    "Odisha", "Punjab", "Maharashtra",
+    "Tamil Nadu", "West Bengal", "Uttar Pradesh"
+];
+
+const soil_types = ["Alluvial", "Black", "Red", "Laterite", "Sandy", "Clayey"];
+
+const crops = [
+    "Rice", "Wheat", "Maize", "Cotton", "Sugarcane", "Potato",
+    "Green Gram", "Black Gram", "Chickpea", "Lentil",
+    "Soybean", "Groundnut", "Cowpea", "Pigeon Pea",
+    "Mustard", "Sunflower"
+];
 
 export default function SoilPage() {
     const [loading, setLoading] = useState(false);
-    const [recommendation, setRecommendation] = useState<SoilData | null>(null);
+
+    // Form State
+    const [soilType, setSoilType] = useState(soil_types[1]);
+    const [prevCrop, setPrevCrop] = useState(crops[10]);
+    const [region, setRegion] = useState(states[2]);
+
+    const [recommendation, setRecommendation] = useState<any>(null);
 
     const handleAnalyze = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        // Simulate API call delay for effect
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        const data = await api.getSoilRecommendation();
-        setRecommendation(data);
-        setLoading(false);
+        try {
+            const response = await fetch('http://localhost:8000/api/crop-recommendation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    soil_type: soilType,
+                    previous_crop: prevCrop,
+                    state: region
+                }),
+            });
+
+            if (!response.ok) {
+                console.error("API error", await response.text());
+                return;
+            }
+
+            const data = await response.json();
+            setRecommendation(data);
+        } catch (error) {
+            console.error("Failed to fetch crop recommendation", error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -51,24 +91,38 @@ export default function SoilPage() {
                         </div>
 
                         <div className="space-y-4">
-                            <Input
-                                id="prevCrop"
-                                label="Previous Crop"
-                                defaultValue="Wheat"
-                                className="bg-[#1F2937]/50 border-white/10 focus:border-agri-green/50"
-                            />
-                            <Input
-                                id="soilType"
-                                label="Soil Type"
-                                defaultValue="Black Cotton Soil"
-                                className="bg-[#1F2937]/50 border-white/10 focus:border-agri-green/50"
-                            />
-                            <Input
-                                id="region"
-                                label="Region"
-                                defaultValue="Vidarbha"
-                                className="bg-[#1F2937]/50 border-white/10 focus:border-agri-green/50"
-                            />
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-300">Previous Crop</label>
+                                <select
+                                    value={prevCrop}
+                                    onChange={(e) => setPrevCrop(e.target.value)}
+                                    className="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-agri-green/50 appearance-none"
+                                >
+                                    {crops.map(c => <option key={c} value={c} className="bg-[#0E1210]">{c}</option>)}
+                                </select>
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-300">Soil Type</label>
+                                <select
+                                    value={soilType}
+                                    onChange={(e) => setSoilType(e.target.value)}
+                                    className="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-agri-green/50 appearance-none"
+                                >
+                                    {soil_types.map(s => <option key={s} value={s} className="bg-[#0E1210]">{s}</option>)}
+                                </select>
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-300">Region</label>
+                                <select
+                                    value={region}
+                                    onChange={(e) => setRegion(e.target.value)}
+                                    className="w-full bg-[#1F2937]/50 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-agri-green/50 appearance-none"
+                                >
+                                    {states.map(s => <option key={s} value={s} className="bg-[#0E1210]">{s}</option>)}
+                                </select>
+                            </div>
                         </div>
 
                         <Button
@@ -112,11 +166,11 @@ export default function SoilPage() {
                                         <div className="p-5 rounded-xl bg-[#0B1F17]/50 border border-white/5 backdrop-blur-sm">
                                             <p className="text-xs text-gray-500 uppercase mb-2 font-bold tracking-wider">Regeneration Score</p>
                                             <div className="flex items-end gap-3">
-                                                <span className="text-3xl font-bold text-agri-green">{recommendation.soil_regeneration_score}%</span>
+                                                <span className="text-3xl font-bold text-agri-green">78%</span>
                                                 <div className="flex-1 h-2 bg-gray-800 rounded-full mb-2 overflow-hidden">
                                                     <motion.div
                                                         initial={{ width: 0 }}
-                                                        animate={{ width: `${recommendation.soil_regeneration_score}%` }}
+                                                        animate={{ width: `78%` }}
                                                         className="h-full bg-agri-green rounded-full"
                                                     />
                                                 </div>
@@ -125,7 +179,7 @@ export default function SoilPage() {
                                         <div className="p-5 rounded-xl bg-[#0B1F17]/50 border border-white/5 backdrop-blur-sm">
                                             <p className="text-xs text-gray-500 uppercase mb-2 font-bold tracking-wider">Sustainability Impact</p>
                                             <div className="flex items-center gap-2">
-                                                <span className="text-2xl font-bold text-white">{recommendation.sustainability}</span>
+                                                <span className="text-2xl font-bold text-white">{recommendation.sustainability_impact || 'Moderate'}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -140,7 +194,7 @@ export default function SoilPage() {
                                     </div>
                                     <div>
                                         <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Water Requirement</p>
-                                        <p className="font-bold text-white text-lg">Low - Moderate</p>
+                                        <p className="font-bold text-white text-lg">{recommendation.water_requirement}</p>
                                     </div>
                                 </Card>
                                 <Card className="flex items-center gap-4 bg-[#0E1210] border-white/5 p-6 hover:border-agri-green/30 transition-colors group">
@@ -149,7 +203,7 @@ export default function SoilPage() {
                                     </div>
                                     <div>
                                         <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Growth Cycle</p>
-                                        <p className="font-bold text-white text-lg">90 - 110 Days</p>
+                                        <p className="font-bold text-white text-lg">{recommendation.growth_cycle}</p>
                                     </div>
                                 </Card>
                             </div>

@@ -20,3 +20,8 @@ class DecisionRequest(BaseModel):
     temperature: float = Field(..., description="Current temperature in Celsius")
     humidity: float = Field(..., description="Relative humidity percentage")
     current_market_price: float = Field(..., description="Current market price per quintal")
+
+class CropRecommendationRequest(BaseModel):
+    soil_type: str = Field(..., description="Soil type (e.g., Alluvial, Clay, Loamy)")
+    previous_crop: str = Field(..., description="Previous crop grown (e.g., Wheat, Rice, Cotton)")
+    state: str = Field(..., description="State or Region (e.g., Punjab, Maharashtra)")

@@ -31,3 +31,9 @@ class DecisionResponse(BaseModel):
     spoilage_probability: float
     spoilage_class: str
     model_confidence: float
+
+class CropRecommendationResponse(BaseModel):
+    recommended_crop: str
+    water_requirement: str
+    growth_cycle: str
+    sustainability_impact: str

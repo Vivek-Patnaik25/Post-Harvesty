@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     SPOILAGE_MODEL_PATH: str = os.getenv("SPOILAGE_MODEL_PATH", "../models/spoilage_model.pkl")
     FORECAST_MODEL_PATH: str = os.getenv("FORECAST_MODEL_PATH", "../models/Price-Forecast.joblib")
     FEATURE_COLUMNS_PATH: str = os.getenv("FEATURE_COLUMNS_PATH", "../models/feature_columns-Price-forecast.joblib")
+    CROP_REC_MODEL_PATH: str = os.getenv("CROP_REC_MODEL_PATH", "../models/crop_recommendation_ml_model.pkl")
 
     class Config:
         env_file = ".env"
