@@ -22,7 +22,7 @@ export interface SoilData {
   sustainability: "High" | "Moderate" | "Low";
 }
 
-export type Locale = 'en' | 'es' | 'hi';
+export type Locale = 'en' | 'es' | 'hi' | 'or' | 'gu' | 'te';
 
 export interface User {
   name: string;

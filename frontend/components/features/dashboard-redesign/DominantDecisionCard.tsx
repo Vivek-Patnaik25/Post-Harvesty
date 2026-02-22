@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Brain } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface DecisionCardProps {
     decision: 'SELL' | 'WAIT' | 'SPOILED' | 'AWAITING' | string;
@@ -11,8 +12,15 @@ interface DecisionCardProps {
 }
 
 export function DominantDecisionCard({ decision = 'AWAITING', confidence = 0, waitDays = 0 }: DecisionCardProps) {
+    const { t } = useLanguage();
     const isWait = decision === 'WAIT';
     const isSell = decision === 'SELL';
+
+    // Map decision from API to translated string if 'decision' matches the known enum
+    let displayDecision = decision;
+    if (decision === 'SELL') displayDecision = t.dashboard.sell;
+    if (decision === 'WAIT') displayDecision = t.dashboard.wait;
+    if (decision === 'AWAITING') displayDecision = t.dashboard.awaiting;
 
     // Choose dynamic text color based on decision
     const textColor = isWait ? 'text-yellow-400' : isSell ? 'text-agri-green' : 'text-gray-400';
@@ -23,20 +31,20 @@ export function DominantDecisionCard({ decision = 'AWAITING', confidence = 0, wa
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#456A50]/20 to-transparent" />
 
             <div className="flex justify-between items-start relative z-10 p-1">
-                <span className="text-gray-300 text-sm font-medium">AI Decision</span>
+                <span className="text-gray-300 text-sm font-medium">{t.dashboard.ai_decision}</span>
                 <Brain className={`h-5 w-5 ${textColor}`} />
             </div>
 
             <div className="relative z-10">
                 <h2 className={`text-3xl font-bold font-display tracking-wide mb-1 ${textColor}`}>
-                    {decision}
+                    {displayDecision}
                 </h2>
 
                 {decision === 'AWAITING' ? (
-                    <p className="text-sm text-gray-400">Enter data to analyze</p>
+                    <p className="text-sm text-gray-400">{t.dashboard.enter_data}</p>
                 ) : (
                     <p className="text-sm text-gray-200">
-                        {isWait ? `Wait ${waitDays} days` : 'Immediate Action'}
+                        {isWait ? `${t.dashboard.wait_days} ${waitDays} ${t.dashboard.days}` : t.dashboard.immediate_action}
                     </p>
                 )}
             </div>

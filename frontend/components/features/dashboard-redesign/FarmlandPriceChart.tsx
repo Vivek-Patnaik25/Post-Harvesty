@@ -3,12 +3,14 @@
 import { useMemo } from 'react';
 import { Card } from '@/components/ui/Card';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface FarmlandPriceChartProps {
     forecastData?: number[];
 }
 
 export function FarmlandPriceChart({ forecastData }: FarmlandPriceChartProps) {
+    const { t } = useLanguage();
 
     const chartData = useMemo(() => {
         // Base historical data up to today (assuming today is Thursday for the demo)
@@ -47,17 +49,17 @@ export function FarmlandPriceChart({ forecastData }: FarmlandPriceChartProps) {
 
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 relative z-10 px-6 pt-6 gap-4">
                 <div>
-                    <h3 className="text-xl font-bold font-display text-white tracking-tight">Price Forecast</h3>
-                    <p className="text-sm text-gray-400 font-light">3-Day Predictive Analysis</p>
+                    <h3 className="text-xl font-bold font-display text-white tracking-tight">{t.dashboard.price_forecast}</h3>
+                    <p className="text-sm text-gray-400 font-light">{t.dashboard.price_forecast_desc}</p>
                 </div>
 
                 <div className="flex gap-4">
                     <div className="bg-[#10B981]/10 border border-[#10B981]/30 rounded-lg px-4 py-2 backdrop-blur-sm">
-                        <p className="text-[10px] uppercase text-[#10B981] font-bold tracking-wider">Tomorrow</p>
+                        <p className="text-[10px] uppercase text-[#10B981] font-bold tracking-wider">{t.dashboard.tomorrow}</p>
                         <p className="text-xl font-bold text-white">{nextPrice !== '--' ? `₹ ${nextPrice}` : '--'} <span className="text-xs font-normal text-gray-400">/ Qtl</span></p>
                     </div>
                     <div className="bg-[#10B981]/10 border border-[#10B981]/30 rounded-lg px-4 py-2 backdrop-blur-sm">
-                        <p className="text-[10px] uppercase text-[#10B981] font-bold tracking-wider">Day 3 Target</p>
+                        <p className="text-[10px] uppercase text-[#10B981] font-bold tracking-wider">{t.dashboard.day_3_target}</p>
                         <p className="text-xl font-bold text-white">{day3Price !== '--' ? `₹ ${day3Price}` : '--'} <span className="text-xs font-normal text-gray-400">/ Qtl</span></p>
                     </div>
                 </div>

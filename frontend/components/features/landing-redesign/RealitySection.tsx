@@ -2,8 +2,10 @@
 
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function RealitySection() {
+    const { t } = useLanguage();
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, margin: "-100px" });
     const [count, setCount] = useState(0);
@@ -49,7 +51,7 @@ export function RealitySection() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        Up to <span className="text-red-500">40%</span> of crop value is lost post-harvest.
+                        {t.landing.reality.headline_1} <span className="text-red-500">{t.landing.reality.headline_2}</span> {t.landing.reality.headline_3}
                     </motion.h2>
                     <motion.p
                         className="text-xl text-gray-400 font-light leading-relaxed"
@@ -58,7 +60,7 @@ export function RealitySection() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
-                        Every hour your harvest sits without a plan, its value decays. Market volatility and spoilage are the silent killers of your hard-earned profit.
+                        {t.landing.reality.subtext}
                     </motion.p>
                 </div>
 
@@ -116,11 +118,11 @@ export function RealitySection() {
                     <div className="absolute top-8 left-8">
                         <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                            <p className="text-red-400 text-sm uppercase tracking-widest font-bold">Value Decay</p>
+                            <p className="text-red-400 text-sm uppercase tracking-widest font-bold">{t.landing.reality.value_decay}</p>
                         </div>
                         <p className="text-4xl font-bold text-white tabular-nums">
                             ₹ {count.toLocaleString()}
-                            <span className="text-lg font-normal text-gray-500 ml-2">/quintal lost</span>
+                            <span className="text-lg font-normal text-gray-500 ml-2">{t.landing.reality.lost_per}</span>
                         </p>
                     </div>
                 </div>

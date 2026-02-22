@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function FarmerTestimonial() {
+    const { t } = useLanguage();
     return (
         <section className="py-32 relative overflow-hidden">
             <div className="absolute inset-0 z-0">
@@ -23,11 +25,11 @@ export function FarmerTestimonial() {
                 >
                     <Quote className="h-12 w-12 text-agri-gold mx-auto mb-8 opacity-50" />
                     <h2 className="text-3xl md:text-5xl font-display font-medium leading-tight mb-10 text-white/90">
-                        "Before AgriIntel, I was guessing when to sell. Last season, I waited 3 days on their advice and made an extra ₹45,000 profit."
+                        {t.landing.testimonial.quote}
                     </h2>
                     <div>
-                        <p className="text-xl font-bold text-white">Rajesh Patil</p>
-                        <p className="text-agri-gold">Tomato Farmer, Maharashtra</p>
+                        <p className="text-xl font-bold text-white">{t.landing.testimonial.name}</p>
+                        <p className="text-agri-gold">{t.landing.testimonial.role}</p>
                     </div>
                 </motion.div>
             </div>

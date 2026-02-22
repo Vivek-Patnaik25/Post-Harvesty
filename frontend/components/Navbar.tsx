@@ -15,6 +15,9 @@ export function Navbar() {
         { code: 'en', label: '🇺🇸 EN' },
         { code: 'es', label: '🇪🇸 ES' },
         { code: 'hi', label: '🇮🇳 HI' },
+        { code: 'or', label: '🇮🇳 OR' },
+        { code: 'gu', label: '🇮🇳 GU' },
+        { code: 'te', label: '🇮🇳 TE' },
     ] as const;
 
     return (

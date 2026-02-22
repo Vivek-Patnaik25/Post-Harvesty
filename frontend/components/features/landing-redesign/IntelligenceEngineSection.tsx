@@ -3,21 +3,23 @@
 import { motion } from 'framer-motion';
 import { CropIcons } from '@/components/ui/design-system/CropIconSet';
 import { Brain, CloudRain, Database } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function IntelligenceEngineSection() {
+    const { t } = useLanguage();
     const steps = [
-        { icon: CropIcons.Tomato, label: "Harvest Data" },
-        { icon: Database, label: "Historical Prices" },
-        { icon: Brain, label: "AI Analysis" },
-        { icon: CloudRain, label: "Spoilage Risk" },
+        { icon: CropIcons.Tomato, label: t.landing.engine.step_1 },
+        { icon: Database, label: t.landing.engine.step_2 },
+        { icon: Brain, label: t.landing.engine.step_3 },
+        { icon: CloudRain, label: t.landing.engine.step_4 },
     ];
 
     return (
         <section className="py-32 bg-[#0F1115] relative overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-20">
-                    <span className="text-agri-gold font-mono uppercase tracking-widest text-sm">The Engine</span>
-                    <h2 className="text-4xl md:text-5xl font-bold font-display mt-4">How AgriIntel Works</h2>
+                    <span className="text-agri-gold font-mono uppercase tracking-widest text-sm">{t.landing.engine.kicker}</span>
+                    <h2 className="text-4xl md:text-5xl font-bold font-display mt-4">{t.landing.engine.title}</h2>
                 </div>
 
                 <div className="flex flex-col md:flex-row items-center justify-between relative max-w-5xl mx-auto">

@@ -7,8 +7,10 @@ import { HarvestRingGauge } from '@/components/features/dashboard-redesign/Harve
 import { FarmlandPriceChart } from '@/components/features/dashboard-redesign/FarmlandPriceChart';
 import { InputPanel } from '@/components/features/dashboard/InputPanel';
 import { Sprout, AlertTriangle, TrendingUp } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function DashboardPage() {
+    const { t } = useLanguage();
     const [isAnalyzing, setIsAnalyzing] = useState(false);
     const [decisionData, setDecisionData] = useState<any>(null);
 
@@ -45,14 +47,14 @@ export default function DashboardPage() {
             {isAnalyzing && (
                 <div className="absolute inset-0 bg-[#050505]/50 backdrop-blur-sm z-50 flex flex-col items-center justify-center rounded-xl transition-all duration-500">
                     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-agri-green mb-4"></div>
-                    <p className="text-agri-green font-medium animate-pulse">Running ML Pipeline...</p>
+                    <p className="text-agri-green font-medium animate-pulse">{t.dashboard.running_ml}</p>
                 </div>
             )}
 
             {/* Header */}
             <div className="flex justify-between items-center relative z-10 transition-opacity duration-500">
                 <h1 className="text-3xl font-bold font-display tracking-tight text-white">
-                    Crop Center
+                    {t.dashboard.crop_center}
                 </h1>
                 <span className="text-sm text-emerald-300/70">US • EN</span>
             </div>
@@ -61,20 +63,20 @@ export default function DashboardPage() {
             <div className={`grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 relative z-10 transition-opacity duration-500 ${isAnalyzing ? 'opacity-40' : 'opacity-100'}`}>
 
                 <DashboardMetricCard
-                    label="Total Crops Tracked"
+                    label={t.dashboard.total_crops_tracked}
                     value="12"
                     icon={Sprout}
                 />
 
                 <DashboardMetricCard
-                    label="Risk Alerts"
+                    label={t.dashboard.risk_alerts}
                     value={decisionData?.spoilage_probability > 0.5 ? "1" : "0"}
                     icon={AlertTriangle}
                     alert={decisionData?.spoilage_probability > 0.5}
                 />
 
                 <DashboardMetricCard
-                    label="Profit Index"
+                    label={t.dashboard.profit_index}
                     value={decisionData ? `${decisionData.profit_index}%` : "--"}
                     icon={TrendingUp}
                     trend={decisionData?.profit_index > 50 ? "up" : "down"}

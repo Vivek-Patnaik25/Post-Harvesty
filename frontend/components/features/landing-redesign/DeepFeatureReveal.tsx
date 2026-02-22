@@ -3,29 +3,34 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Card } from '@/components/ui/Card';
+import { useLanguage } from '@/context/LanguageContext';
 
-const features = [
-    {
-        title: "Spoilage Risk Prediction",
-        desc: "Know exactly how many days your crop has left before quality degrades. Our XGBoost model analyzes temperature, humidity, and time to give you a precise risk score.",
-        gradient: "from-amber-500/20 to-transparent",
-        image: "/assets/images/ui-preview-Spoilage-Risk-Prediction.png"
-    },
-    {
-        title: "3-Day Price Forecast",
-        desc: "Stop selling at a loss. See where the market is heading with 92% accuracy, powered by historical data from your local mandi.",
-        gradient: "from-emerald-500/20 to-transparent",
-        image: "/assets/images/ui-preview-3-Day-Price-Forecast.png"
-    },
-    {
-        title: "Sustainability Optimizer",
-        desc: "Protect your soil for the next generation. Get AI-driven crop rotation plans that regenerate nitrogen and maintain soil health.",
-        gradient: "from-blue-500/20 to-transparent",
-        image: "/assets/images/ui-preview-Sustainability-Optimizer.png"
-    }
-];
+const features = [];
 
 export function DeepFeatureReveal() {
+    const { t } = useLanguage();
+
+    const features = [
+        {
+            title: t.landing.features.f1_title,
+            desc: t.landing.features.f1_desc,
+            gradient: "from-amber-500/20 to-transparent",
+            image: "/assets/images/ui-preview-Spoilage-Risk-Prediction.png"
+        },
+        {
+            title: t.landing.features.f2_title,
+            desc: t.landing.features.f2_desc,
+            gradient: "from-emerald-500/20 to-transparent",
+            image: "/assets/images/ui-preview-3-Day-Price-Forecast.png"
+        },
+        {
+            title: t.landing.features.f3_title,
+            desc: t.landing.features.f3_desc,
+            gradient: "from-blue-500/20 to-transparent",
+            image: "/assets/images/ui-preview-Sustainability-Optimizer.png"
+        }
+    ];
+
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,

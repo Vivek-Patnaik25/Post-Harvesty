@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { Sprout, Layers, MapPin, Leaf, Droplets, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import type { SoilData } from '@/types';
+import { useLanguage } from '@/context/LanguageContext';
 
 // Constants as requested
 const states = [
@@ -24,6 +25,7 @@ const crops = [
 ];
 
 export default function SoilPage() {
+    const { t } = useLanguage();
     const [loading, setLoading] = useState(false);
 
     // Form State
@@ -67,15 +69,15 @@ export default function SoilPage() {
         <div className="space-y-8 animate-fade-in">
             <div className="flex flex-col md:flex-row justify-between items-start gap-4 border-b border-white/5 pb-6">
                 <div>
-                    <h1 className="text-3xl font-bold font-display text-white">Soil & Crop Rotation</h1>
-                    <p className="text-gray-400 mt-1">Optimize your land for long-term sustainability.</p>
+                    <h1 className="text-3xl font-bold font-display text-white">{t.soil.title}</h1>
+                    <p className="text-gray-400 mt-1">{t.soil.description}</p>
                 </div>
                 <div className="px-4 py-2 bg-agri-green/10 border border-agri-green/20 rounded-full flex items-center gap-2 backdrop-blur-md">
                     <span className="relative flex h-3 w-3">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-agri-green opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-agri-green"></span>
                     </span>
-                    <span className="text-agri-green text-xs font-bold uppercase tracking-wider">AI Model Active</span>
+                    <span className="text-agri-green text-xs font-bold uppercase tracking-wider">{t.soil.ai_active}</span>
                 </div>
             </div>
 
@@ -87,12 +89,12 @@ export default function SoilPage() {
                             <div className="p-2 bg-agri-green/10 rounded-lg">
                                 <Layers className="text-agri-green h-5 w-5" />
                             </div>
-                            <h2 className="text-lg font-bold text-white">Field Data</h2>
+                            <h2 className="text-lg font-bold text-white">{t.soil.field_data}</h2>
                         </div>
 
                         <div className="space-y-4">
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-300">Previous Crop</label>
+                                <label className="text-sm font-medium text-gray-300">{t.soil.prev_crop}</label>
                                 <select
                                     value={prevCrop}
                                     onChange={(e) => setPrevCrop(e.target.value)}
@@ -103,7 +105,7 @@ export default function SoilPage() {
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-300">Soil Type</label>
+                                <label className="text-sm font-medium text-gray-300">{t.soil.soil_type}</label>
                                 <select
                                     value={soilType}
                                     onChange={(e) => setSoilType(e.target.value)}
@@ -114,7 +116,7 @@ export default function SoilPage() {
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-300">Region</label>
+                                <label className="text-sm font-medium text-gray-300">{t.soil.region}</label>
                                 <select
                                     value={region}
                                     onChange={(e) => setRegion(e.target.value)}
@@ -130,7 +132,7 @@ export default function SoilPage() {
                             className="w-full h-[48px] !bg-[#10B981] !bg-none text-black font-bold text-lg hover:!bg-[#059669] border-none shadow-[0_0_20px_rgba(16,185,129,0.3)] mt-2"
                             isLoading={loading}
                         >
-                            Generate Rotation Plan
+                            {t.soil.generate}
                             <ArrowRight className="ml-2 h-5 w-5" />
                         </Button>
                     </form>
@@ -151,20 +153,20 @@ export default function SoilPage() {
                                 <div className="relative z-10">
                                     <div className="flex items-center gap-2 mb-4">
                                         <Leaf className="text-agri-green h-5 w-5" />
-                                        <span className="text-agri-green font-mono text-xs uppercase tracking-wider font-bold">Top Recommendation</span>
+                                        <span className="text-agri-green font-mono text-xs uppercase tracking-wider font-bold">{t.soil.top_recommendation}</span>
                                     </div>
 
                                     <div className="flex flex-col md:flex-row md:items-end gap-6 mb-8">
                                         <div>
                                             <h3 className="text-5xl font-bold font-display text-white mb-2">{recommendation.recommended_crop}</h3>
-                                            <p className="text-gray-400 text-lg">Optimal for Nitrogen fixation & Soil Health</p>
+                                            <p className="text-gray-400 text-lg">{t.soil.optimal}</p>
                                         </div>
                                         <div className="hidden md:block flex-1 h-px bg-white/10 mb-4" />
                                     </div>
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="p-5 rounded-xl bg-[#0B1F17]/50 border border-white/5 backdrop-blur-sm">
-                                            <p className="text-xs text-gray-500 uppercase mb-2 font-bold tracking-wider">Regeneration Score</p>
+                                            <p className="text-xs text-gray-500 uppercase mb-2 font-bold tracking-wider">{t.soil.regen_score}</p>
                                             <div className="flex items-end gap-3">
                                                 <span className="text-3xl font-bold text-agri-green">78%</span>
                                                 <div className="flex-1 h-2 bg-gray-800 rounded-full mb-2 overflow-hidden">
@@ -177,7 +179,7 @@ export default function SoilPage() {
                                             </div>
                                         </div>
                                         <div className="p-5 rounded-xl bg-[#0B1F17]/50 border border-white/5 backdrop-blur-sm">
-                                            <p className="text-xs text-gray-500 uppercase mb-2 font-bold tracking-wider">Sustainability Impact</p>
+                                            <p className="text-xs text-gray-500 uppercase mb-2 font-bold tracking-wider">{t.soil.sustainability}</p>
                                             <div className="flex items-center gap-2">
                                                 <span className="text-2xl font-bold text-white">{recommendation.sustainability_impact || 'Moderate'}</span>
                                             </div>
@@ -193,7 +195,7 @@ export default function SoilPage() {
                                         <Droplets className="h-6 w-6 text-blue-400" />
                                     </div>
                                     <div>
-                                        <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Water Requirement</p>
+                                        <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">{t.soil.water_req}</p>
                                         <p className="font-bold text-white text-lg">{recommendation.water_requirement}</p>
                                     </div>
                                 </Card>
@@ -202,7 +204,7 @@ export default function SoilPage() {
                                         <Sprout className="h-6 w-6 text-agri-green" />
                                     </div>
                                     <div>
-                                        <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Growth Cycle</p>
+                                        <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">{t.soil.growth_cycle}</p>
                                         <p className="font-bold text-white text-lg">{recommendation.growth_cycle}</p>
                                     </div>
                                 </Card>
@@ -213,8 +215,8 @@ export default function SoilPage() {
                             <div className="p-6 bg-white/5 rounded-full mb-4">
                                 <Layers className="h-10 w-10 opacity-50" />
                             </div>
-                            <p className="text-lg font-medium text-gray-400">Enter field data to generate insights</p>
-                            <p className="text-sm text-gray-600 mt-2">AI analysis takes ~1-2 seconds</p>
+                            <p className="text-lg font-medium text-gray-400">{t.soil.enter_data}</p>
+                            <p className="text-sm text-gray-600 mt-2">{t.soil.analysis_time}</p>
                         </div>
                     )}
                 </div>

@@ -3,8 +3,10 @@
 import { motion } from 'framer-motion';
 import { TrendingUp } from 'lucide-react';
 import { FieldDivider } from '@/components/ui/design-system/FieldDivider';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function TurningPointSection() {
+    const { t } = useLanguage();
     return (
         <section className="min-h-screen bg-[#0D1211] relative py-24 flex flex-col justify-center overflow-hidden">
             {/* Divider */}
@@ -19,7 +21,7 @@ export function TurningPointSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    What if you knew the <span className="text-agri-green">right time</span> to sell?
+                    {t.landing.turning.headline_1} <span className="text-agri-green">{t.landing.turning.headline_2}</span> {t.landing.turning.headline_3}
                 </motion.h2>
 
                 <div className="relative max-w-4xl mx-auto h-[400px] border-l border-b border-white/10 bg-white/5 rounded-tr-3xl">
@@ -83,17 +85,17 @@ export function TurningPointSection() {
                                 <TrendingUp className="text-agri-gold h-6 w-6" />
                             </div>
                             <div className="text-left">
-                                <p className="text-xs text-agri-gold uppercase font-bold tracking-wider">Optimal Sell Point</p>
-                                <p className="text-white font-bold text-lg">+ 22% Profit</p>
+                                <p className="text-xs text-agri-gold uppercase font-bold tracking-wider">{t.landing.turning.optimal}</p>
+                                <p className="text-white font-bold text-lg">{t.landing.turning.profit}</p>
                             </div>
                         </div>
                     </motion.div>
 
                     {/* Axis Labels */}
                     <div className="absolute bottom-[-40px] w-full flex justify-between text-gray-500 text-sm font-medium px-4">
-                        <span>Harvest Day</span>
-                        <span>Day 7</span>
-                        <span>Day 14 (Risk Critical)</span>
+                        <span>{t.landing.turning.harvest_day}</span>
+                        <span>{t.landing.turning.day_7}</span>
+                        <span>{t.landing.turning.day_14}</span>
                     </div>
                 </div>
             </div>
