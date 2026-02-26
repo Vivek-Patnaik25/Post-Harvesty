@@ -1,0 +1,57 @@
+﻿Analyzing Application...                                        
+
+   info - Constructors for public widgets should have a named 'key' parameter - lib\main.dart:8:7 - use_key_in_widget_constructors
+   info - 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\main.dart:21:11 - deprecated_member_use
+warning - Unused import: 'package:lucide_icons/lucide_icons.dart' - lib\screens\analytics_screen.dart:3:8 - unused_import
+   info - Constructors for public widgets should have a named 'key' parameter - lib\screens\analytics_screen.dart:5:7 - use_key_in_widget_constructors
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\analytics_screen.dart:87:41 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\analytics_screen.dart:102:43 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\analytics_screen.dart:250:83 - deprecated_member_use
+   info - Constructors for public widgets should have a named 'key' parameter - lib\screens\dashboard_screen.dart:8:7 - use_key_in_widget_constructors
+   info - Invalid use of a private type in a public API - lib\screens\dashboard_screen.dart:10:3 - library_private_types_in_public_api
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\dashboard_screen.dart:98:38 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\dashboard_screen.dart:134:43 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\dashboard_screen.dart:140:59 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\dashboard_screen.dart:245:36 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\dashboard_screen.dart:263:48 - deprecated_member_use
+   info - Unnecessary use of string interpolation - lib\screens\dashboard_screen.dart:280:42 - unnecessary_string_interpolations
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\dashboard_screen.dart:288:50 - deprecated_member_use
+   info - Constructors for public widgets should have a named 'key' parameter - lib\screens\landing_screen.dart:4:7 - use_key_in_widget_constructors
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\landing_screen.dart:17:37 - deprecated_member_use
+warning - Unused import: 'package:lucide_icons/lucide_icons.dart' - lib\screens\main_navigation.dart:2:8 - unused_import
+   info - Constructors for public widgets should have a named 'key' parameter - lib\screens\main_navigation.dart:8:7 - use_key_in_widget_constructors
+   info - Invalid use of a private type in a public API - lib\screens\main_navigation.dart:10:3 - library_private_types_in_public_api
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\main_navigation.dart:30:49 - deprecated_member_use
+   info - Constructors for public widgets should have a named 'key' parameter - lib\screens\settings_screen.dart:3:7 - use_key_in_widget_constructors
+   info - Invalid use of a private type in a public API - lib\screens\settings_screen.dart:5:3 - library_private_types_in_public_api
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\settings_screen.dart:56:42 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\settings_screen.dart:58:136 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\settings_screen.dart:70:29 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\settings_screen.dart:189:50 - deprecated_member_use
+   info - Constructors for public widgets should have a named 'key' parameter - lib\screens\soil_screen.dart:5:7 - use_key_in_widget_constructors
+   info - Invalid use of a private type in a public API - lib\screens\soil_screen.dart:7:3 - library_private_types_in_public_api
+warning - The value of the field '_apiService' isn't used - lib\screens\soil_screen.dart:11:20 - unused_field
+  error - Expected to find ';' - lib\screens\soil_screen.dart:56:30 - expected_token
+  error - Undefined name '_api' - lib\screens\soil_screen.dart:56:30 - undefined_identifier
+  error - Illegal character '2360' - lib\screens\soil_screen.dart:56:35 - illegal_character
+  error - Undefined name 'αñ╕αñ░αÑìαñ╡αñ┐αñ╕' - lib\screens\soil_screen.dart:56:35 - undefined_identifier
+  error - Illegal character '2352' - lib\screens\soil_screen.dart:56:36 - illegal_character
+  error - Illegal character '2381' - lib\screens\soil_screen.dart:56:37 - illegal_character
+  error - Illegal character '2357' - lib\screens\soil_screen.dart:56:38 - illegal_character
+  error - Illegal character '2367' - lib\screens\soil_screen.dart:56:39 - illegal_character
+  error - Illegal character '2360' - lib\screens\soil_screen.dart:56:40 - illegal_character
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\soil_screen.dart:80:38 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\soil_screen.dart:119:45 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\soil_screen.dart:121:64 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\soil_screen.dart:161:55 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\soil_screen.dart:209:36 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\soil_screen.dart:286:112 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\soil_screen.dart:306:113 - deprecated_member_use
+   info - Parameter 'key' could be a super parameter - lib\widgets\price_chart.dart:8:9 - use_super_parameters
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\price_chart.dart:61:47 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\price_chart.dart:63:66 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\price_chart.dart:133:48 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\price_chart.dart:134:48 - deprecated_member_use
+   info - Parameter 'key' could be a super parameter - lib\widgets\spoilage_gauge.dart:7:9 - use_super_parameters
+warning - Unused import: 'package:flutter/material.dart' - test\widget_test.dart:8:8 - unused_import
+
